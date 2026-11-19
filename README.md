@@ -1,9 +1,20 @@
-# Puente Técnico — The Bugs · HackPony 2026
+# NextPoint (Puente Técnico) — The Bugs · HackPony 2026 · Reto 05
 
 Marketplace donde empresas de Michoacán publican **micro-retos reales** y estudiantes de TI se postulan **en un clic**. Cada estudiante ve su **% de compatibilidad** (80% habilidades obligatorias + 20% deseables) y qué le falta. La empresa ve a sus candidatos **ordenados por compatibilidad**.
 
 **Stack:** Next.js 16 (App Router, Server Actions) · Supabase (Auth + PostgreSQL con RLS) · Tailwind CSS 4 · Vercel.
 
+## Para el jurado
+
+- **App en vivo:** https://hack-pony2026.vercel.app (también instalable en el celular como PWA: `/instalar`).
+- **Arquitectura explicada:** https://hack-pony2026.vercel.app/arquitectura
+- **Cuentas demo:** estudiante `ana@demo.puentetecnico.mx` · empresa `tecnomich@demo.puentetecnico.mx`. La contraseña la da el equipo en persona (no se publica en el repositorio).
+- **Requisitos del MVP y dónde verlos:**
+  1. Perfil de estudiante con proyectos, enlaces a repos y habilidades → `/perfil`, `/estudiantes/[id]`.
+  2. Tablero de micro-retos con filtro y matching automático → `/retos`.
+  3. Postulación en un clic y candidatos ordenados por % → botón "Postularme" en cada reto; `/empresa` para la empresa.
+- **Verificación:** 25 pruebas unitarias del matching y la configuración (`npm test`), 35 pruebas de seguridad RLS y 28 pruebas de comportamiento contra la base de Supabase real (`npm run verify:supabase`: 28/28).
+- Empresas y personas de la demo son ficticias.
 ---
 
 ## 1. Correr en tu computadora
