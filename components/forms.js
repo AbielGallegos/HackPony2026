@@ -73,7 +73,7 @@ export function LoginForm({ next, demoAccounts, local }) {
           <p className="mt-2 text-xs text-slate-500">Toca una para llenar el correo. La contraseña la tiene quien presenta la demo.</p>
           <div className="mt-2 grid gap-1.5 sm:grid-cols-2">
             {demoAccounts.map((a) => (
-              <button key={a.email} type="button" onClick={() => setEmail(a.email)} className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-left text-xs hover:border-indigo-300">
+              <button key={a.email} type="button" onClick={() => setEmail(a.email)} className="rounded-lg border border-slate-200 bg-surface px-3 py-2 text-left text-xs hover:border-indigo-300">
                 <b>{a.name}</b> · {a.role === "student" ? "Estudiante" : "Empresa"}
               </button>
             ))}
@@ -156,7 +156,7 @@ export function ApplicationStatusSelect({ applicationId, challengeId, status }) 
     <div className="flex flex-col gap-0.5">
       <select
         aria-label="Estado de la postulación"
-        className="min-h-11 rounded-lg border border-slate-300 bg-white px-2 py-1 text-base sm:min-h-0 sm:text-xs"
+        className="min-h-11 rounded-lg border border-slate-300 bg-surface px-2 py-1 text-base sm:min-h-0 sm:text-xs"
         value={value}
         disabled={pending}
         onChange={(e) => {
@@ -310,7 +310,7 @@ function SkillPicker({ name, selected, onToggle, tone }) {
             aria-pressed={on}
             onClick={() => onToggle(s.slug)}
             className={`rounded-full px-2.5 py-1 text-xs font-medium ring-1 transition ${
-              on ? (tone === "req" ? "bg-indigo-600 text-white ring-indigo-600" : "bg-sky-100 text-sky-800 ring-sky-300") : "bg-white text-slate-600 ring-slate-200 hover:bg-slate-50"
+              on ? (tone === "req" ? "bg-indigo-600 text-white ring-indigo-600" : "bg-sky-100 text-sky-800 ring-sky-300") : "bg-surface text-slate-600 ring-slate-200 hover:bg-slate-50"
             }`}
           >
             {s.label}

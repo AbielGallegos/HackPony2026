@@ -56,7 +56,7 @@ export default async function Retos({ searchParams }) {
           </p>
         </div>
         {isStudent && (
-          <div className="flex rounded-xl bg-white p-1 ring-1 ring-slate-200" role="tablist" aria-label="Vista">
+          <div className="flex rounded-xl bg-surface p-1 ring-1 ring-slate-200" role="tablist" aria-label="Vista">
             {[["recomendados", "Recomendados"], ["todos", `Todos (${total})`]].map(([v, l]) => (
               <Link key={v} role="tab" aria-selected={vista === v} href={link({ vista: v === "recomendados" ? "" : v })} className={`rounded-lg px-3 py-1.5 text-sm font-medium ${vista === v ? "bg-indigo-600 text-white" : "text-slate-600 hover:bg-slate-50"}`}>
                 {l}

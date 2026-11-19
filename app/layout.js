@@ -10,7 +10,7 @@ export const metadata = {
   description: BRAND.description,
   applicationName: BRAND.shortName,
   // iPhone/iPad: abrir desde la pantalla de inicio sin barras de Safari.
-  appleWebApp: { capable: true, title: BRAND.shortName, statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: BRAND.shortName, statusBarStyle: "black-translucent" },
   formatDetection: { telephone: false },
 };
 
@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="es" className="h-full antialiased">
       <body className="flex min-h-full flex-col font-sans">
-        <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
+        <header className="sticky top-0 z-20 border-b border-slate-200 bg-bg/80 backdrop-blur">
           <nav className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-3" aria-label="Principal">
             <Link href="/" className="mr-2 flex items-center gap-2 font-bold text-slate-900">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-sm text-white" aria-hidden="true">PT</span>

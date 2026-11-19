@@ -3,7 +3,7 @@ import { DATA_MODE } from "@/lib/mode.mjs";
 
 export const metadata = { title: "Arquitectura · Puente Técnico" };
 
-const Box = ({ title, children, tone = "bg-white" }) => (
+const Box = ({ title, children, tone = "bg-surface" }) => (
   <div className={`rounded-2xl border border-slate-200 p-4 ${tone}`}>
     <p className="font-bold">{title}</p>
     <div className="mt-1 text-sm text-slate-600">{children}</div>
