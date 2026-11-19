@@ -30,7 +30,11 @@ export async function signIn(_prev, formData) {
     if (!EMAIL_RE.test(email) || !password) throw new ValidationError("Escribe tu correo y tu contraseña.");
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw new ValidationError("Correo o contraseña incorrectos.");
+    if (error) {
+      // Solo en el log del servidor (Vercel → Logs); al usuario no se le revela la causa.
+      console.error("[signIn]", error.status, error.code, error.message);
+      throw new ValidationError("Correo o contraseña incorrectos.");
+    }
     const { data: profile } = await supabase.from("profiles").select("role").eq("id", data.user.id).maybeSingle();
     target = safeNext(formData.get("next"), home(profile?.role));
   });
