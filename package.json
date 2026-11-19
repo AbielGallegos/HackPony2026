@@ -1,0 +1,29 @@
+{
+  "name": "puente-tecnico",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --test lib/matching.test.mjs lib/mode.test.mjs",
+    "seed:sql": "node scripts/gen-seed-sql.mjs",
+    "seed:demo": "node --env-file=.env.local scripts/seed-demo.mjs",
+    "demo:password": "node scripts/demo-password.mjs",
+    "verify:supabase": "node --env-file=.env.local scripts/verify-supabase.mjs"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.2",
+    "next": "16.4.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/turbopack": "4.3.3",
+    "tailwindcss": "4.3.3"
+  },
+  "engines": {
+    "node": ">=20.9"
+  }
+}
