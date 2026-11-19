@@ -13,7 +13,7 @@ body {
   @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
 }
 @utility btn {
-  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
 }
 @utility btn-primary {
   @apply btn bg-indigo-600 text-white hover:bg-indigo-700;
@@ -22,8 +22,15 @@ body {
   @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
 }
 @utility input {
-  @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100;
+  @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-base outline-none sm:text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100;
 }
 @utility label {
   @apply mb-1 block text-sm font-medium text-slate-700;
+}
+
+/* En la app instalada (standalone) se respeta el área segura del iPhone. */
+@media (display-mode: standalone) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }

@@ -47,12 +47,27 @@ Solo para desarrollar la interfaz sin red existe el **modo local de desarrollo**
 2. En Vercel: **Add New → Project →** importa el repositorio.
 3. En **Environment Variables** agrega `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` y `SHOW_DEMO_ACCOUNTS=1`. **No** agregues `SUPABASE_SERVICE_ROLE_KEY`, `DEMO_PASSWORD` ni `ALLOW_LOCAL_MODE`.
    Si por error pones una llave secreta (`sb_secret_…` o `service_role`) en una variable `NEXT_PUBLIC_*`, la app la detecta y se niega a arrancar.
-4. Deploy. Las variables `NEXT_PUBLIC_*` se fijan al compilar: si las cambias, vuelve a desplegar.
+4. Deploy. Las variables `NEXT_PUBLIC_*` se fijan al compilar: si las cambias, vuelve a desplegar. Si faltan o son inválidas, la compilación se detiene con un mensaje claro (falla segura).
+5. En Supabase → **Authentication → URL Configuration**: pon la URL de Vercel (`https://….vercel.app`) en **Site URL** y agrégala en **Redirect URLs** como `https://….vercel.app/**`. El inicio de sesión es con contraseña (sin enlaces por correo), pero así cualquier correo que mande Supabase apunta al sitio correcto.
 
-## 4. Pruebas
+## 4. Celular (PWA) y GitHub
+
+**Instalar en el celular.** La misma app web se instala desde el navegador (no hay app de tienda). Requiere la URL con HTTPS de Vercel:
+- **Android (Chrome):** menú ⋮ → *Instalar app*.
+- **iPhone (Safari):** Compartir → *Agregar a inicio*.
+- En la app está la guía en `/instalar`. En iPhone la app instalada tiene su propia sesión: hay que iniciar sesión una vez dentro.
+- No hay *service worker* ni caché sin conexión, a propósito: ninguna página privada ni respuesta autenticada se guarda en el teléfono.
+- El nombre y los colores de la PWA están en `lib/brand.mjs`.
+
+**GitHub (opcional, no bloquea el MVP).**
+- Al agregar un proyecto con URL de un repositorio público, el servidor consulta su nombre, descripción, lenguajes y estrellas. Si GitHub no responde, el enlace se guarda igual.
+- "Revisar repos" en el perfil cuenta en cuántos repositorios públicos aparece cada habilidad. Esto **no cambia el %**; solo desempata en el ranking.
+- `GITHUB_TOKEN` es opcional, solo de servidor (sin `NEXT_PUBLIC_`), y sube el límite de 60 a 5,000 consultas por hora.
+
+## 5. Pruebas
 
 ```bash
-npm test     # 18 pruebas: matching (12) y validación de configuración (6)
+npm test     # 25 pruebas: matching (12), configuración (6) y GitHub con red simulada (7)
 npm run build
 ```
 
@@ -65,7 +80,7 @@ PGURL="postgresql://postgres@localhost:5432" bash supabase/tests/rls_test.sh
 ```
 Comprueban, por ejemplo, que un estudiante no se cambie el rol, que nadie se postule en nombre de otro, que no se pueda postular a un reto cerrado, que la empresa B no vea los candidatos de la empresa A y que el doble clic no duplique postulaciones.
 
-## 5. Estructura
+## 6. Estructura
 
 ```
 proxy.js                     sesión de Supabase y rutas protegidas (Next 16)
@@ -78,7 +93,9 @@ lib/mode.mjs                 decide el modo y valida la configuración (falla se
 lib/auth.mjs                 getUser / requireRole
 lib/validation.mjs           validación de entradas
 lib/skills.mjs               catálogo de habilidades
-lib/github.mjs               evidencia de repos públicos (opcional)
+lib/github.mjs               GitHub: datos de un repo y evidencia por habilidad (opcional)
+lib/brand.mjs                nombre, colores y descripción de la PWA
+app/manifest.js              manifest de la PWA (+ public/icons, app/apple-icon.png)
 supabase/migrations/         001 esquema · 002 RLS · 003 create_challenge
 supabase/setup-completo.sql  las 3 migraciones + catálogo en un solo archivo (SQL Editor)
 supabase/verificar.sql       consulta de solo lectura: tablas, RLS, políticas y trigger
@@ -88,7 +105,7 @@ AGENTS.md                    reglas para las IA del equipo
 docs/CONTRATOS.md            tablas, formas de datos y firmas compartidas
 ```
 
-## 6. Guion corto de la demo (dos dispositivos)
+## 7. Guion corto de la demo (dos dispositivos)
 
 1. **Laptop:** entra como TecnoMich y publica *"Panel de inventario para un negocio local"* con JavaScript, React, SQL y Git como obligatorias.
 2. **Celular:** entra como Ana (JavaScript, React y Git). El reto aparece con **75%** y *"✕ SQL"*.

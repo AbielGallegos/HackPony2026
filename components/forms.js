@@ -156,7 +156,7 @@ export function ApplicationStatusSelect({ applicationId, challengeId, status }) 
     <div className="flex flex-col gap-0.5">
       <select
         aria-label="Estado de la postulación"
-        className="rounded-lg border border-slate-300 bg-white px-2 py-1 text-xs"
+        className="min-h-11 rounded-lg border border-slate-300 bg-white px-2 py-1 text-base sm:min-h-0 sm:text-xs"
         value={value}
         disabled={pending}
         onChange={(e) => {
@@ -261,7 +261,7 @@ export function AddProjectForm() {
   if (!open) return <button className="btn-ghost" onClick={() => setOpen(true)}>+ Agregar proyecto</button>;
   return (
     <form ref={ref} onSubmit={onSubmit} className="grid gap-2 sm:grid-cols-2">
-      <input name="title" className="input sm:col-span-2" placeholder="Nombre del proyecto" required minLength={3} maxLength={120} aria-label="Nombre del proyecto" />
+      <input name="title" className="input sm:col-span-2" placeholder="Nombre del proyecto (si es de GitHub, se toma del repositorio)" minLength={3} maxLength={120} aria-label="Nombre del proyecto" />
       <input name="repo_url" type="url" className="input" placeholder="https://github.com/usuario/repo" aria-label="Enlace al repositorio" />
       <input name="demo_url" type="url" className="input" placeholder="https://mi-demo.vercel.app (opcional)" aria-label="Enlace a la demo" />
       <input name="description" className="input sm:col-span-2" placeholder="¿Qué hace? (opcional)" maxLength={300} aria-label="Descripción" />

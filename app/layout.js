@@ -3,10 +3,21 @@ import "./globals.css";
 import { getUser } from "@/lib/auth.mjs";
 import { DATA_MODE } from "@/lib/mode.mjs";
 import { signOut } from "./actions/auth";
+import { BRAND } from "@/lib/brand.mjs";
 
 export const metadata = {
   title: "Puente Técnico · Retos reales para talento universitario",
-  description: "Marketplace donde empresas locales publican micro-retos y estudiantes muestran portafolios con evidencia.",
+  description: BRAND.description,
+  applicationName: BRAND.shortName,
+  // iPhone/iPad: abrir desde la pantalla de inicio sin barras de Safari.
+  appleWebApp: { capable: true, title: BRAND.shortName, statusBarStyle: "default" },
+  formatDetection: { telephone: false },
+};
+
+export const viewport = {
+  themeColor: BRAND.themeColor,
+  width: "device-width",
+  initialScale: 1,
 };
 
 const NavLink = ({ href, children }) => (
@@ -58,7 +69,8 @@ export default async function RootLayout({ children }) {
 
         <footer className="border-t border-slate-200 py-4 text-center text-xs text-slate-500">
           The Bugs · HackPony 2026 · Empresas y personas de demostración ficticias ·{" "}
-          <Link href="/arquitectura" className="underline">Arquitectura</Link> · Datos:{" "}
+          <Link href="/arquitectura" className="underline">Arquitectura</Link> ·{" "}
+          <Link href="/instalar" className="underline">Instalar en el celular</Link> · Datos:{" "}
           {DATA_MODE === "supabase" ? (
             <span className="text-emerald-700">Supabase (en línea)</span>
           ) : (

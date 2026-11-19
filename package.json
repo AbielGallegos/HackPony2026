@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --test lib/matching.test.mjs lib/mode.test.mjs",
+    "test": "node --test lib/matching.test.mjs lib/mode.test.mjs lib/github.test.mjs",
     "seed:sql": "node scripts/gen-seed-sql.mjs",
     "seed:demo": "node --env-file=.env.local scripts/seed-demo.mjs",
     "demo:password": "node scripts/demo-password.mjs",
