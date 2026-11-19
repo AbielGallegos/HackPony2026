@@ -6,7 +6,7 @@ import { signOut } from "./actions/auth";
 import { BRAND } from "@/lib/brand.mjs";
 
 export const metadata = {
-  title: "Puente Técnico · Retos reales para talento universitario",
+  title: "NextPoint · Retos reales para talento universitario",
   description: BRAND.description,
   applicationName: BRAND.shortName,
   // iPhone/iPad: abrir desde la pantalla de inicio sin barras de Safari.
@@ -34,23 +34,34 @@ export default async function RootLayout({ children }) {
       <body className="flex min-h-full flex-col font-sans">
         <header className="sticky top-0 z-20 border-b border-slate-200 bg-bg/80 backdrop-blur">
           <nav className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-3" aria-label="Principal">
-            <Link href="/" className="mr-2 flex items-center gap-2 font-bold text-slate-900">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-sm text-white" aria-hidden="true">PT</span>
-              <span className="hidden sm:inline">Puente Técnico</span>
+            <Link href="/" className="mr-2 flex items-center" aria-label="NextPoint, inicio">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/nextpoint-icon.png" alt="" width="28" height="28" className="h-7 w-auto sm:hidden" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/nextpoint-logo.png" alt="NextPoint" width="144" height="28" className="hidden h-7 w-auto sm:block" />
             </Link>
             <div className="flex items-center text-sm">
               <NavLink href="/retos">Retos</NavLink>
-              {user?.role === "student" && <NavLink href="/perfil">Mi perfil</NavLink>}
-              {user?.role === "company" && <NavLink href="/empresa">Mi empresa</NavLink>}
             </div>
             <div className="ml-auto flex items-center gap-2">
               {user ? (
                 <>
-                  <span className="hidden text-right text-xs leading-tight text-slate-500 sm:block">
-                    {user.role === "student" ? "Estudiante" : "Empresa"}
-                    <br />
-                    <span className="font-semibold text-slate-800">{user.displayName}</span>
-                  </span>
+                  {/* El perfil se abre desde el nombre (estudiante → /perfil, empresa → /empresa). */}
+                  <Link
+                    href={user.role === "student" ? "/perfil" : "/empresa"}
+                    className="group flex items-center gap-2 rounded-xl px-2 py-1 hover:bg-slate-100"
+                    title={user.role === "student" ? "Ver mi perfil" : "Ver mi empresa"}
+                  >
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 text-xs font-bold text-white" aria-hidden="true">
+                      {user.displayName.split(" ").map((w) => w[0]).slice(0, 2).join("").toUpperCase()}
+                    </span>
+                    <span className="hidden text-left text-xs leading-tight sm:block">
+                      <span className="text-slate-500">{user.role === "student" ? "Estudiante" : "Empresa"}</span>
+                      <br />
+                      <span className="font-semibold text-slate-800 group-hover:text-neon">{user.displayName}</span>
+                    </span>
+                    <span className="sr-only">{user.role === "student" ? "Ver mi perfil" : "Ver mi empresa"}</span>
+                  </Link>
                   <form action={signOut}>
                     <button className="btn-ghost px-3 py-1.5 text-xs">Salir</button>
                   </form>

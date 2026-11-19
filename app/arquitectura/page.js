@@ -1,7 +1,7 @@
 import { WEIGHTS, RECOMMENDED_REQUIRED_RATIO } from "@/lib/matching.mjs";
 import { DATA_MODE } from "@/lib/mode.mjs";
 
-export const metadata = { title: "Arquitectura · Puente Técnico" };
+export const metadata = { title: "Arquitectura · NextPoint" };
 
 const Box = ({ title, children, tone = "bg-surface" }) => (
   <div className={`rounded-2xl border border-slate-200 p-4 ${tone}`}>

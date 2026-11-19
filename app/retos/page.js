@@ -6,7 +6,7 @@ import { isSkill, SKILL_OPTIONS } from "@/lib/skills.mjs";
 import { ScoreBadge, MatchWhy, SkillChip, RequiredNote, EmptyState, mxn, timeAgo } from "@/components/ui";
 import { ApplyButton } from "@/components/forms";
 
-export const metadata = { title: "Retos · Puente Técnico" };
+export const metadata = { title: "Retos · NextPoint" };
 
 export default async function Retos({ searchParams }) {
   const sp = await searchParams;

@@ -14,7 +14,7 @@
 
   --color-bg: #070b16;
   --color-surface: #0e1526;
-  --color-neon: #22d3ee;
+  --color-neon: #f59e0b; /* naranja del logo NextPoint */
 
   --color-slate-50: #111a2e;
   --color-slate-100: #172238;
@@ -30,11 +30,11 @@
   --color-indigo-50: #1a1c46;
   --color-indigo-100: #23265c;
   --color-indigo-200: #2f3480;
-  --color-indigo-300: #4146b8;
-  --color-indigo-500: #7c83ff;
-  --color-indigo-600: #6366f1;
-  --color-indigo-700: #a5b0ff;
-  --color-indigo-800: #c7cdff;
+  --color-indigo-300: #5b3cc4;
+  --color-indigo-500: #7a4cf0;
+  --color-indigo-600: #5b2bd6; /* morado del logo NextPoint */
+  --color-indigo-700: #b9a3ff;
+  --color-indigo-800: #d6caff;
 
   --color-emerald-50: #06261d;
   --color-emerald-100: #0a3a2b;
@@ -66,13 +66,13 @@ html {
 
 body {
   background:
-    radial-gradient(1200px 500px at 50% -200px, rgb(99 102 241 / 0.14), transparent 70%),
+    radial-gradient(1200px 500px at 50% -200px, rgb(91 43 214 / 0.18), transparent 70%),
     var(--color-bg);
   color: var(--color-slate-800);
 }
 
 ::selection {
-  background: rgb(34 211 238 / 0.3);
+  background: rgb(245 158 11 / 0.3);
 }
 
 @utility card {

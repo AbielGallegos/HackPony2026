@@ -10,7 +10,7 @@ export default async function Home() {
   return (
     <div className="space-y-10">
       <section className="bg-grid relative overflow-hidden rounded-3xl border border-slate-200 bg-surface px-6 py-12 sm:px-10">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-indigo-600/20 blur-3xl" aria-hidden="true" />
         <div className="relative grid items-center gap-10 lg:grid-cols-[1.25fr_1fr]">
           <div>
             <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1 font-mono text-xs text-slate-600">

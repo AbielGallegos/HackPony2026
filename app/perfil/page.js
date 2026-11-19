@@ -7,7 +7,7 @@ import { ScoreBar, StatusPill, ChallengeState, timeAgo } from "@/components/ui";
 import { ProfileHeader, SkillsSection, ProjectsSection } from "@/components/StudentProfileView";
 import { ProfileForm, AddSkillForm, AddProjectForm, GitHubForm } from "@/components/forms";
 
-export const metadata = { title: "Mi perfil · Puente Técnico" };
+export const metadata = { title: "Mi perfil · NextPoint" };
 
 function Progress({ student }) {
   const steps = [
@@ -81,7 +81,7 @@ export default async function MiPerfil({ searchParams }) {
           <h2 className="mb-3 font-bold">Mis postulaciones</h2>
           {apps.length === 0 && (
             <p className="text-sm text-slate-500">
-              Aún no te postulas. <Link href="/retos" className="text-indigo-600 underline">Explorar retos</Link>
+              Aún no te postulas. <Link href="/retos" className="text-indigo-700 underline">Explorar retos</Link>
             </p>
           )}
           <ul className="space-y-3">

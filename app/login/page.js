@@ -6,7 +6,7 @@ import { LoginForm } from "@/components/forms";
 import { resetDemo } from "../actions/auth";
 import * as demo from "@/lib/demo-data.mjs";
 
-export const metadata = { title: "Entrar · Puente Técnico" };
+export const metadata = { title: "Entrar · NextPoint" };
 
 // Cuentas de demostración: se muestran en modo local o si SHOW_DEMO_ACCOUNTS=1 (para el hackatón).
 // Solo se listan los correos: la contraseña NUNCA se envía al navegador.
@@ -37,7 +37,7 @@ export default async function Login({ searchParams }) {
         <LoginForm next={next} demoAccounts={demoAccounts()} local={isLocal} />
         {!isLocal && (
           <p className="mt-5 text-center text-sm text-slate-500">
-            ¿No tienes cuenta? <Link href="/registro" className="font-semibold text-indigo-600">Crear cuenta</Link>
+            ¿No tienes cuenta? <Link href="/registro" className="font-semibold text-indigo-700">Crear cuenta</Link>
           </p>
         )}
       </div>

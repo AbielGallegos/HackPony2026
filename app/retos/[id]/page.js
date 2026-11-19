@@ -27,7 +27,7 @@ function CandidateRow({ rank, student, match, app, challengeId }) {
           <RequiredNote match={match} />
           {match.evidenceMatches > 0 && <span className="text-emerald-700">{match.evidenceMatches} con evidencia en GitHub</span>}
           {firstLink && (
-            <a href={firstLink.repo_url ?? firstLink.demo_url} target="_blank" rel="noreferrer" className="text-indigo-600 underline">
+            <a href={firstLink.repo_url ?? firstLink.demo_url} target="_blank" rel="noreferrer" className="text-indigo-700 underline">
               Ver proyecto ↗
             </a>
           )}
@@ -130,7 +130,7 @@ export default async function RetoDetalle({ params, searchParams }) {
             <MatchWhy match={myMatch} />
             {myMatch.missing.length > 0 && (
               <p className="text-center text-xs text-slate-500">
-                Para subir tu %: aprende o demuestra {myMatch.missing.map((m) => m.slug).length === 1 ? "la habilidad que falta" : "las habilidades que faltan"} y agrégala{myMatch.missing.length > 1 ? "s" : ""} en <Link href="/perfil" className="text-indigo-600 underline">tu perfil</Link>.
+                Para subir tu %: aprende o demuestra {myMatch.missing.map((m) => m.slug).length === 1 ? "la habilidad que falta" : "las habilidades que faltan"} y agrégala{myMatch.missing.length > 1 ? "s" : ""} en <Link href="/perfil" className="text-indigo-700 underline">tu perfil</Link>.
               </p>
             )}
             <ApplyButton challengeId={challenge.id} applied={alreadyApplied} disabledReason={challenge.status !== "open" && !alreadyApplied ? "Este reto ya no recibe postulaciones." : null} />
