@@ -1,31 +1,105 @@
 @import "tailwindcss";
 
+/*
+  Tema "oscuro tecnológico".
+  En vez de reescribir cada clase, se redefine la paleta de Tailwind: la escala slate
+  queda invertida (50 = superficie oscura, 900 = texto claro) y los tonos de estado
+  (emerald, amber, rose, sky, indigo claros) pasan a fondos oscuros con texto brillante.
+  Así todas las páginas cambian juntas y el contraste se mantiene.
+  `bg-surface` es el fondo de tarjetas y campos (antes bg-white).
+*/
 @theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --color-bg: #070b16;
+  --color-surface: #0e1526;
+  --color-neon: #f59e0b; /* naranja del logo NextPoint */
+
+  --color-slate-50: #111a2e;
+  --color-slate-100: #172238;
+  --color-slate-200: #22304a;
+  --color-slate-300: #31415f;
+  --color-slate-400: #6b7a96;
+  --color-slate-500: #94a3b8;
+  --color-slate-600: #aab6ca;
+  --color-slate-700: #c7d1e0;
+  --color-slate-800: #e2e8f0;
+  --color-slate-900: #f1f5f9;
+
+  --color-indigo-50: #1a1c46;
+  --color-indigo-100: #23265c;
+  --color-indigo-200: #2f3480;
+  --color-indigo-300: #5b3cc4;
+  --color-indigo-500: #7a4cf0;
+  --color-indigo-600: #5b2bd6; /* morado del logo NextPoint */
+  --color-indigo-700: #b9a3ff;
+  --color-indigo-800: #d6caff;
+
+  --color-emerald-50: #06261d;
+  --color-emerald-100: #0a3a2b;
+  --color-emerald-200: #0f5640;
+  --color-emerald-700: #34d399;
+  --color-emerald-800: #6ee7b7;
+
+  --color-amber-50: #2a1d06;
+  --color-amber-100: #3b2908;
+  --color-amber-200: #5a400c;
+  --color-amber-700: #fbbf24;
+  --color-amber-800: #fcd34d;
+  --color-amber-900: #fde68a;
+
+  --color-rose-50: #2b0b13;
+  --color-rose-100: #430f1e;
+  --color-rose-200: #66162b;
+  --color-rose-600: #fb7185;
+  --color-rose-700: #fda4af;
+
+  --color-sky-100: #0b2a3d;
+  --color-sky-300: #155e85;
+  --color-sky-800: #7dd3fc;
+}
+
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: #f6f7fb;
-  color: #0f172a;
+  background:
+    radial-gradient(1200px 500px at 50% -200px, rgb(91 43 214 / 0.18), transparent 70%),
+    var(--color-bg);
+  color: var(--color-slate-800);
+}
+
+::selection {
+  background: rgb(245 158 11 / 0.3);
 }
 
 @utility card {
-  @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+  @apply rounded-2xl border border-slate-200 bg-surface shadow-lg shadow-black/20;
 }
 @utility btn {
   @apply inline-flex min-h-11 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-60;
 }
 @utility btn-primary {
-  @apply btn bg-indigo-600 text-white hover:bg-indigo-700;
+  @apply btn bg-indigo-600 text-white shadow-lg shadow-indigo-600/25 hover:bg-indigo-500;
 }
 @utility btn-ghost {
-  @apply btn border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
+  @apply btn border border-slate-300 bg-surface text-slate-700 hover:border-slate-400 hover:bg-slate-50;
 }
 @utility input {
-  @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-base outline-none sm:text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100;
+  @apply w-full rounded-xl border border-slate-300 bg-surface px-3 py-2.5 text-base text-slate-900 outline-none placeholder:text-slate-400 sm:text-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200;
 }
 @utility label {
   @apply mb-1 block text-sm font-medium text-slate-700;
+}
+
+/* Cuadrícula sutil para la portada. */
+@utility bg-grid {
+  background-image:
+    linear-gradient(rgb(148 163 184 / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(148 163 184 / 0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 /* En la app instalada (standalone) se respeta el área segura del iPhone. */

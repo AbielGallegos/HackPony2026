@@ -65,8 +65,8 @@ export function ProjectsSection({ student, editable, children }) {
             </div>
             {p.description && <p className="mt-1 line-clamp-2 text-sm text-slate-600">{p.description}</p>}
             <div className="mt-auto flex flex-wrap items-center gap-3 pt-2 text-xs">
-              {p.repo_url && <a href={p.repo_url} target="_blank" rel="noreferrer" className="font-medium text-indigo-600 hover:underline">Repositorio ↗</a>}
-              {p.demo_url && <a href={p.demo_url} target="_blank" rel="noreferrer" className="font-medium text-indigo-600 hover:underline">Demo ↗</a>}
+              {p.repo_url && <a href={p.repo_url} target="_blank" rel="noreferrer" className="font-medium text-indigo-700 hover:underline">Repositorio ↗</a>}
+              {p.demo_url && <a href={p.demo_url} target="_blank" rel="noreferrer" className="font-medium text-indigo-700 hover:underline">Demo ↗</a>}
               {p.language && <span className="text-slate-500">{p.language}</span>}
               {p.stars > 0 && <span className="text-slate-500">★ {p.stars}</span>}
               {editable && <span className="ml-auto"><RemoveProjectButton projectId={p.id} /></span>}

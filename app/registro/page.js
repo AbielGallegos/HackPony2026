@@ -4,7 +4,7 @@ import { getUser } from "@/lib/auth.mjs";
 import { isLocal } from "@/lib/mode.mjs";
 import { SignUpForm } from "@/components/forms";
 
-export const metadata = { title: "Crear cuenta · Puente Técnico" };
+export const metadata = { title: "Crear cuenta · NextPoint" };
 
 export default async function Registro({ searchParams }) {
   const { rol } = await searchParams;
@@ -21,7 +21,7 @@ export default async function Registro({ searchParams }) {
         <SignUpForm defaultRole={rol} />
       )}
       <p className="mt-5 text-center text-sm text-slate-500">
-        ¿Ya tienes cuenta? <Link href="/login" className="font-semibold text-indigo-600">Inicia sesión</Link>
+        ¿Ya tienes cuenta? <Link href="/login" className="font-semibold text-indigo-700">Inicia sesión</Link>
       </p>
     </div>
   );

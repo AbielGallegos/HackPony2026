@@ -5,7 +5,7 @@ import { getUser } from "@/lib/auth.mjs";
 import { ChallengeState, EmptyState, mxn, timeAgo } from "@/components/ui";
 import { ChallengeForm } from "@/components/forms";
 
-export const metadata = { title: "Mi empresa · Puente Técnico" };
+export const metadata = { title: "Mi empresa · NextPoint" };
 
 export default async function Empresa() {
   const user = await getUser();

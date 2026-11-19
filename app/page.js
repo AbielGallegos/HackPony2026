@@ -9,23 +9,61 @@ export default async function Home() {
 
   return (
     <div className="space-y-10">
-      <section className="overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-700 via-indigo-600 to-violet-600 px-6 py-12 text-white sm:px-10">
-        <p className="mb-3 inline-block rounded-full bg-white/15 px-3 py-1 text-xs font-semibold">Hecho en Morelia, Michoacán</p>
-        <h1 className="max-w-3xl text-3xl font-extrabold leading-tight sm:text-5xl">Tu primera experiencia laboral no debería requerir experiencia.</h1>
-        <p className="mt-4 max-w-2xl text-indigo-100 sm:text-lg">
-          Empresas locales publican <b>micro-retos reales</b>. Estudiantes de TI se postulan en un clic y ven al instante su{" "}
-          <b>% de compatibilidad</b>: qué habilidades tienen y cuáles les faltan.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          {primary ? (
-            <Link href={primary[0]} className="btn bg-white text-indigo-700 hover:bg-indigo-50">{primary[1]}</Link>
-          ) : (
-            <>
-              <Link href="/registro" className="btn bg-white text-indigo-700 hover:bg-indigo-50">Soy estudiante →</Link>
-              <Link href="/registro?rol=company" className="btn border border-white/40 text-white hover:bg-white/10">Soy empresa →</Link>
-              <Link href="/retos" className="btn text-indigo-100 underline-offset-4 hover:underline">Explorar retos</Link>
-            </>
-          )}
+      <section className="bg-grid relative overflow-hidden rounded-3xl border border-slate-200 bg-surface px-6 py-12 sm:px-10">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-indigo-600/20 blur-3xl" aria-hidden="true" />
+        <div className="relative grid items-center gap-10 lg:grid-cols-[1.25fr_1fr]">
+          <div>
+            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-300 px-3 py-1 font-mono text-xs text-slate-600">
+              <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_8px_var(--color-neon)]" aria-hidden="true" />
+              Hecho en Morelia, Michoacán
+            </p>
+            <h1 className="max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+              Tu primera experiencia laboral <span className="text-neon">no debería requerir experiencia.</span>
+            </h1>
+            <p className="mt-4 max-w-2xl text-slate-600 sm:text-lg">
+              Empresas locales publican <b className="text-slate-900">micro-retos reales</b>. Estudiantes de TI se postulan en un clic y ven al instante su{" "}
+              <b className="text-slate-900">% de compatibilidad</b>: qué habilidades tienen y cuáles les faltan.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              {primary ? (
+                <Link href={primary[0]} className="btn-primary">{primary[1]}</Link>
+              ) : (
+                <>
+                  <Link href="/registro" className="btn-primary">Soy estudiante →</Link>
+                  <Link href="/registro?rol=company" className="btn-ghost">Soy empresa →</Link>
+                  <Link href="/retos" className="btn text-slate-600 underline-offset-4 hover:text-slate-900 hover:underline">Explorar retos</Link>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Ejemplo ilustrativo de cómo se explica el %: no son datos de un usuario real. */}
+          <figure className="rounded-2xl border border-slate-200 bg-bg/70 p-5 font-mono text-sm shadow-2xl shadow-black/40" aria-label="Ejemplo de cálculo SkillMatch">
+            <figcaption className="mb-4 flex items-center justify-between text-xs text-slate-500">
+              <span>skillmatch · ejemplo</span>
+              <span className="flex gap-1.5" aria-hidden="true">
+                <span className="h-2.5 w-2.5 rounded-full bg-rose-600/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-amber-700/70" />
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-700/70" />
+              </span>
+            </figcaption>
+            <p className="text-slate-500">Reto: Panel de inventario</p>
+            <ul className="mt-3 space-y-1.5">
+              <li className="text-emerald-700">✓ JavaScript <span className="text-slate-400">obligatoria</span></li>
+              <li className="text-emerald-700">✓ React <span className="text-slate-400">obligatoria</span></li>
+              <li className="text-emerald-700">✓ Git <span className="text-slate-400">obligatoria</span></li>
+              <li className="text-rose-600">✕ SQL <span className="text-slate-400">obligatoria</span></li>
+            </ul>
+            <div className="mt-4 border-t border-slate-200 pt-4">
+              <p className="text-slate-500">3 de 4 obligatorias · sin deseables ⇒ <span className="text-slate-900">100 × 3/4</span></p>
+              <div className="mt-2 flex items-center gap-3">
+                <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100">
+                  <div className="h-full w-3/4 rounded-full bg-neon shadow-[0_0_12px_var(--color-neon)]" />
+                </div>
+                <span className="text-lg font-bold text-neon">75%</span>
+              </div>
+            </div>
+          </figure>
         </div>
       </section>
 
