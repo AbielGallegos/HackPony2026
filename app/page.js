@@ -29,7 +29,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="grid grid-cols-2 gap-4 sm:grid-cols-4" aria-label="Cifras de la plataforma">
+      {stats && <section className="grid grid-cols-2 gap-4 sm:grid-cols-4" aria-label="Cifras de la plataforma">
         {[
           [stats.challenges, "micro-retos abiertos"],
           [stats.companies, "empresas"],
@@ -41,7 +41,7 @@ export default async function Home() {
             <p className="text-sm text-slate-500">{l}</p>
           </div>
         ))}
-      </section>
+      </section>}
 
       <section className="grid gap-6 lg:grid-cols-2">
         <div className="card p-6">
